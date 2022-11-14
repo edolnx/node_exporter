@@ -40,13 +40,44 @@ typedef struct {
 } Duration;
 
 typedef struct {
+        double          other;
+        double          read;
+        double          write;   
+        double          free;
+	double		total;
+} TxnPerSec;
+
+typedef struct {
+        double          read;
+        double          write;   
+} mBps;
+
+typedef struct {
+        double          read;
+        double          write;   
+	double		free;
+} kBpt;
+
+typedef struct {
+        double          other;
+        double          read;
+        double          write;   
+} MsPerTxn;
+
+typedef struct {
 	char		device[DEVSTAT_NAME_LEN];
 	int		unit;
 	Bytes		bytes;
 	Transfers	transfers;
 	Duration	duration;
-	long		busyTime;
+	long		busy_time;
+	long		busy_percent;
 	uint64_t	blocks;
+	uint64_t	queue_length;
+	TxnPerSec	tps;
+	mBps		mbps;
+	kBpt		kbpt;
+	MsPerTxn	mspertxn;
 } Stats;
 
 
